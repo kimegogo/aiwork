@@ -19,8 +19,8 @@
   --t1: #111827;
   --t2: #4b5563;
   --t3: #9ca3af;
-  --blue: #3b82f6;
-  --blue-d: #2563eb;
+  --blue: #2563eb;
+  --blue-d: #1d4ed8;
   --green: #10b981;
   --r-sm: 8px;
   --r-md: 12px;
@@ -46,36 +46,46 @@
 }
 
 /* 提示詞卡片配色調色盤 */
-/* 格式：背景(備用) / 文字 / 主色 / 次背景(Footer) / 提示文字 */
-.p0{--cb:#f3f0ff;--ct:#4c1d95;--cm:#7c3aed;--cs:#ede9fe;--ck:#5b21b6}
-.p1{--cb:#ecfdf5;--ct:#064e3b;--cm:#059669;--cs:#d1fae5;--ck:#065f46}
-.p2{--cb:#eff6ff;--ct:#1e3a8a;--cm:#2563eb;--cs:#dbeafe;--ck:#1d4ed8}
-.p3{--cb:#fff7ed;--ct:#7c2d12;--cm:#ea580c;--cs:#ffedd5;--ck:#c2410c}
-.p4{--cb:#fdf2f8;--ct:#831843;--cm:#db2777;--cs:#fce7f3;--ck:#9d174d}
-.p5{--cb:#fefce8;--ct:#713f12;--cm:#ca8a04;--cs:#fef9c3;--ck:#854d0e}
-.p6{--cb:#fff1f2;--ct:#881337;--cm:#e11d48;--cs:#ffe4e6;--ck:#9f1239}
-.p7{--cb:#ecfeff;--ct:#164e63;--cm:#0891b2;--cs:#cffafe;--ck:#155e75}
-.p8{--cb:#f7fee7;--ct:#365314;--cm:#65a30d;--cs:#ecfccb;--ck:#3f6212}
-.p9{--cb:#faf5ff;--ct:#581c87;--cm:#a21caf;--cs:#fae8ff;--ck:#7e22ce}
-.p10{--cb:#fff0f0;--ct:#7f1d1d;--cm:#dc2626;--cs:#fee2e2;--ck:#991b1b}
-.p11{--cb:#eef2ff;--ct:#312e81;--cm:#4f46e5;--cs:#e0e7ff;--ck:#3730a3}
+.p0{--cb:#f3f0ff;--ct:#4c1d95;--cm:#7c3aed;--cs:#f5f3ff;--ck:#4c1d95}
+.p1{--cb:#ecfdf5;--ct:#064e3b;--cm:#059669;--cs:#f0fdf4;--ck:#064e3b}
+.p2{--cb:#eff6ff;--ct:#1e3a8a;--cm:#2563eb;--cs:#f0f7ff;--ck:#1e3a8a}
+.p3{--cb:#fff7ed;--ct:#7c2d12;--cm:#ea580c;--cs:#fffaf5;--ck:#7c2d12}
+.p4{--cb:#fdf2f8;--ct:#831843;--cm:#db2777;--cs:#fdf4f9;--ck:#831843}
+.p5{--cb:#fefce8;--ct:#713f12;--cm:#ca8a04;--cs:#fefdf0;--ck:#713f12}
+.p6{--cb:#fff1f2;--ct:#881337;--cm:#e11d48;--cs:#fff5f6;--ck:#881337}
+.p7{--cb:#ecfeff;--ct:#164e63;--cm:#0891b2;--cs:#f0fdfa;--ck:#164e63}
+.p8{--cb:#f7fee7;--ct:#365314;--cm:#65a30d;--cs:#f9fef0;--ck:#365314}
+.p9{--cb:#faf5ff;--ct:#581c87;--cm:#a21caf;--cs:#fdf4ff;--ck:#581c87}
+.p10{--cb:#fff0f0;--ct:#7f1d1d;--cm:#dc2626;--cs:#fff5f5;--ck:#7f1d1d}
+.p11{--cb:#eef2ff;--ct:#312e81;--cm:#4f46e5;--cs:#f5f7ff;--ck:#312e81}
 
 body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;line-height:1.6;transition:background var(--ease), color var(--ease);overflow-x:hidden}
 
-/* 導覽列 */
-.topbar{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;transition:background var(--ease), border var(--ease);backdrop-filter:blur(8px)}
-.topbar-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.logo{font-size:1.15rem;font-weight:700;color:var(--t1);text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:8px}
-.search-bar{flex:1;max-width:480px;position:relative}
-.search-bar svg.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--t3);pointer-events:none}
-#searchInput{width:100%;height:40px;padding:0 40px 0 42px;border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface-2);font-size:.9rem;font-family:inherit;color:var(--t1);outline:none;transition:all var(--ease)}
-#searchInput:focus{border-color:var(--focus);box-shadow:0 0 0 4px rgba(59,130,246,.18);background:var(--surface)}
+/* 頂部快捷列 */
+.topbar{position:absolute;right:1.5rem;top:1rem;z-index:100}
+.action-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:var(--t2);cursor:pointer;transition:all var(--ease);box-shadow:var(--s1)}
+.action-btn:hover{background:var(--surface-2);color:var(--t1);border-color:var(--t3)}
+.action-btn svg{width:18px;height:18px}
+
+/* 整合式英雄宣傳區 (置中排版) */
+.hero{text-align:center;padding:3rem 1.5rem 2rem;background: radial-gradient(circle at top, rgba(59,130,246,0.05), transparent 60%);display:flex;flex-direction:column;align-items:center;gap:0.6rem}
+.hero h1{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;letter-spacing:-.02em;color:var(--t1);display:flex;align-items:center;justify-content:center;gap:10px}
+.sheet-link{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;color:var(--t2);text-decoration:none;padding:6px 12px;border-radius:var(--r-sm);transition:all var(--ease);font-weight:500;border:1px solid transparent}
+.sheet-link:hover{color:var(--blue);border-color:var(--border);background:var(--surface)}
+.sheet-link svg{width:15px;height:15px}
+
+/* 搜尋框區塊 (置中) */
+.search-container{width:100%;max-width:520px;margin:1rem auto 1.5rem;position:relative;padding:0 1rem}
+.search-bar{position:relative;width:100%}
+.search-bar svg.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--t3);pointer-events:none}
+#searchInput{width:100%;height:46px;padding:0 40px 0 46px;border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface);font-size:.95rem;font-family:inherit;color:var(--t1);outline:none;transition:all var(--ease);box-shadow:var(--s1)}
+#searchInput:focus{border-color:var(--focus);box-shadow:0 0 0 4px rgba(59,130,246,.18)}
 #searchInput::placeholder{color:var(--t3)}
 
 /* 搜尋清除按鈕 */
 .clear-search {
   position: absolute;
-  right: 14px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -94,43 +104,24 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;back
   color: var(--t1);
 }
 
-.topbar-actions{display:flex;align-items:center;gap:10px}
-.action-btn{background:none;border:1px solid var(--border);border-radius:var(--r-sm);width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:var(--t2);cursor:pointer;transition:all var(--ease)}
-.action-btn:hover{background:var(--surface-2);color:var(--t1);border-color:var(--t3)}
-.action-btn svg{width:18px;height:18px}
-
-.sheet-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--t2);text-decoration:none;padding:8px 14px;border-radius:var(--r-sm);border:1px solid var(--border);transition:all var(--ease);font-weight:500}
-.sheet-link:hover{background:var(--surface-2);color:var(--t1);border-color:var(--t3)}
-.sheet-link svg{width:15px;height:15px}
-
-/* 英雄宣傳區 */
-.hero{text-align:center;padding:4rem 1rem 3rem;background: radial-gradient(circle at top, rgba(59,130,246,0.05), transparent 60%)}
-.hero h1{font-size:clamp(2rem,6vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.2;background: linear-gradient(135deg, var(--t1), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent}
-.hero p{margin-top:.8rem;font-size:1rem;color:var(--t2);max-width:600px;margin-left:auto;margin-right:auto}
-.hero-stats{display:inline-flex;gap:2rem;margin-top:1.8rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:.75rem 2.5rem;box-shadow:var(--s1);transition: background var(--ease), border var(--ease)}
-.stat{text-align:center;position:relative}
-.stat:not(:last-child)::after{content:'';position:absolute;right:-1rem;top:20%;bottom:20%;width:1px;background:var(--border)}
-.stat-num{font-size:1.4rem;font-weight:700;color:var(--blue);display:block}
-.stat-label{font-size:.78rem;color:var(--t3);font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
-
-/* 篩選標籤 */
-.filter-section{max-width:1280px;margin:0 auto;padding:0 1.5rem 1.5rem}
-.filter-scroll{display:flex;flex-wrap:wrap;gap:8px}
-.pill{cursor:pointer;padding:.45rem 1.1rem;border-radius:var(--r-xl);font-size:.82rem;font-weight:500;font-family:inherit;background:var(--surface);color:var(--t2);border:1px solid var(--border);transition:all var(--ease);white-space:nowrap;user-select:none;box-shadow: 0 1px 2px rgba(0,0,0,0.02)}
+/* 篩選標籤 (置中排列) */
+.filter-section{max-width:1280px;margin:0 auto;padding:0 1.5rem 2rem}
+.filter-scroll{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.pill{cursor:pointer;padding:.45rem 1.2rem;border-radius:var(--r-xl);font-size:.85rem;font-weight:500;font-family:inherit;background:var(--surface);color:var(--t2);border:1px solid var(--border);transition:all var(--ease);white-space:nowrap;user-select:none;box-shadow: 0 1px 2px rgba(0,0,0,0.02)}
 .pill:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
-.pill.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow: 0 4px 12px rgba(59,130,246,0.25)}
+.pill.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow: 0 4px 12px rgba(37,99,235,0.2)}
 
 /* 版面結構 */
 .layout{max-width:1280px;margin:0 auto;padding:0 1.5rem 5rem}
 .section{margin-bottom:3.5rem;animation: fadeUp 0.4s ease both}
-.section-head{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
-.section-head h2{font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.section-head h2{font-size:1.25rem;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--t1)}
 .section-count{font-size:.75rem;font-weight:700;color:var(--t3);background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:2px 10px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
 
-/* 卡片設計 - 已改為白底 */
+/* 卡片設計 - 白底 + 頂部配條 */
 .card{
-  background: var(--surface); /* 設為標準背景白底 */
+  background: var(--surface);
   border-radius: var(--r-lg);
   border: 1px solid var(--border);
   box-shadow: var(--s1);
@@ -142,58 +133,72 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;back
 }
 .card:hover{box-shadow:var(--s2);transform:translateY(-4px);border-color:var(--blue)}
 .card-stripe{height:5px;background:var(--cm);width:100%}
-.card-body{padding:1.25rem 1.25rem 1rem;flex:1;display:flex;flex-direction:column;gap:.6rem}
-.card-tag{font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:4px 10px;border-radius:999px;display:inline-block;width:fit-content;background:var(--cm);color:#fff;box-shadow: 0 2px 4px rgba(0,0,0,0.06)}
-.card-title{font-size:1.05rem;font-weight:700;color:var(--ct);line-height:1.4}
-.card-preview{font-size:.82rem;line-height:1.8;flex:1;color:var(--ck);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;opacity:0.9;white-space: pre-wrap}
-.card-footer{padding:.85rem 1.25rem;border-top:1px solid var(--border);display:flex;gap:10px;background:var(--cs)}
+.card-body{padding:1.25rem;flex:1;display:flex;flex-direction:column;gap:.7rem}
 
-.btn-copy{flex:1;padding:.6rem;border-radius:var(--r-sm);background:var(--cm);color:#fff;font-size:.82rem;font-weight:600;font-family:inherit;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all var(--ease);box-shadow: 0 2px 4px rgba(0,0,0,0.05)}
-.btn-copy:hover{opacity:.9;transform:translateY(-1px)}
+/* 分類標籤樣式 */
+.card-tag{font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:4px 12px;border-radius:999px;display:inline-block;width:fit-content;background:var(--cb);color:var(--ct);border: 1px solid rgba(0,0,0,0.02)}
+
+/* 標題 */
+.card-title{font-size:1.1rem;font-weight:700;color:var(--t1);line-height:1.4}
+
+/* 核心：Prompt 內容完全顯示區塊（支援內部滾動與段落保留） */
+.card-prompt-box{
+  background: var(--cs);
+  color: var(--ck);
+  padding: 1.2rem;
+  border-radius: var(--r-md);
+  font-size: .88rem;
+  line-height: 1.7;
+  height: 260px; /* 固定高度保持卡片整齊美觀 */
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: background var(--ease), color var(--ease);
+}
+
+/* 自訂精美滾動條 */
+.card-prompt-box::-webkit-scrollbar {
+  width: 5px;
+}
+.card-prompt-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+.card-prompt-box::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 99px;
+}
+.card-prompt-box::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* 複製 Prompt 置中滿寬按鈕 */
+.card-footer{padding:0 1.25rem 1.25rem;background:transparent}
+.btn-copy{width:100%;padding:.7rem;border-radius:var(--r-sm);background:var(--blue);color:#fff;font-size:.85rem;font-weight:600;font-family:inherit;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all var(--ease);box-shadow: 0 2px 4px rgba(37,99,235,0.15)}
+.btn-copy:hover{background:var(--blue-d);transform:translateY(-1px)}
 .btn-copy:active{transform:translateY(1px)}
-.btn-copy.done{background:var(--green);transform:none}
-.btn-expand{width:36px;height:36px;border-radius:var(--r-sm);background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--ease)}
-.btn-expand:hover{background:rgba(255,255,255,.95);transform: scale(1.05)}
-.btn-expand svg{width:15px;height:15px;color:var(--ck)}
+.btn-copy.done{background:var(--green);transform:none;box-shadow:none}
 
-/* 深色模式下的卡片調校，確保文字對比度完美 */
-[data-theme="dark"] .card {
-  border: 1px solid var(--border);
+/* 深色模式調校 */
+[data-theme="dark"] .card-prompt-box {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--t2);
+  border-color: rgba(255, 255, 255, 0.05);
 }
-[data-theme="dark"] .card-title {
-  color: var(--t1); /* 確保標題明亮易讀 */
+[data-theme="dark"] .card-prompt-box::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
 }
-[data-theme="dark"] .card-preview {
-  color: var(--t2); /* 確保預覽內文亮麗清晰 */
+[data-theme="dark"] .card-prompt-box::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
-[data-theme="dark"] .card-footer {
-  background: var(--surface-2); /* 深色模式下底部採用深色背景 */
-  border-top: 1px solid var(--border);
+[data-theme="dark"] .btn-copy {
+  background: var(--blue);
+  color: #0b0f19;
+  font-weight: 700;
 }
-[data-theme="dark"] .btn-expand {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
+[data-theme="dark"] .btn-copy:hover {
+  background: #93c5fd;
 }
-[data-theme="dark"] .btn-expand svg {
-  color: var(--t1);
-}
-
-/* 彈窗設計 */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,12,20,.65);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px);opacity:0;transition:opacity 0.2s ease}
-.modal-overlay.open{display:flex;opacity:1}
-.modal{background:var(--surface);border-radius:var(--r-lg);max-width:680px;width:100%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.25);transform:scale(.95);transition:transform 0.2s cubic-bezier(.34, 1.56, 0.64, 1);border:1px solid var(--border)}
-.modal-overlay.open .modal{transform:scale(1)}
-.modal-header{padding:1.4rem 1.6rem 1.1rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px}
-.modal-header h3{font-size:1.15rem;font-weight:700;flex:1;line-height:1.4;color:var(--t1)}
-.modal-close{width:32px;height:32px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--ease);color:var(--t2)}
-.modal-close:hover{background:#fee2e2;color:#ef4444;border-color:#fca5a5}
-.modal-close svg{width:16px;height:16px}
-.modal-content{padding:1.4rem 1.6rem;overflow-y:auto;flex:1;background:var(--surface-2)}
-.modal-content pre{font-family:inherit;font-size:.88rem;line-height:1.8;color:var(--t1);white-space:pre-wrap;word-break:break-all}
-.modal-footer{padding:1.2rem 1.6rem;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;background:var(--surface)}
-.btn-modal-copy{padding:.6rem 1.5rem;border-radius:var(--r-sm);background:var(--blue);color:#fff;font-size:.88rem;font-weight:600;font-family:inherit;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all var(--ease)}
-.btn-modal-copy:hover{background:var(--blue-d);transform:translateY(-1px)}
-.btn-modal-copy.done{background:var(--green);transform:none}
 
 /* 提示通知 (Toast) */
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(40px);background:#111827;color:#fff;font-size:.88rem;font-weight:500;padding:.7rem 1.6rem;border-radius:999px;pointer-events:none;opacity:0;transition:transform .3s cubic-bezier(.18, .89, .32, 1.28), opacity .2s;z-index:9999;display:flex;align-items:center;gap:8px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3)}
@@ -216,83 +221,55 @@ footer{text-align:center;padding:2.5rem 1.5rem;font-size:.8rem;color:var(--t3);b
 
 /* 響應式優化 */
 @media(max-width:768px){
-  .topbar-inner{padding:0 1rem;height:60px}
-  .search-bar{max-width:none;order:3;width:100%;flex:none}
-  .topbar{position:relative;height:auto}
-  .topbar-inner{flex-wrap:wrap;height:auto;padding:0.75rem 1rem;gap:0.75rem}
-  .topbar-actions{margin-left:auto}
-  .hero{padding:2.5rem 1rem 2rem}
-  .hero-stats{gap:1.2rem;padding:.6rem 1.5rem}
+  .hero{padding:2.5rem 1rem 1.5rem}
   .cards{grid-template-columns:1fr}
   .layout,.filter-section{padding-left:1rem;padding-right:1rem}
+  .topbar {top: 0.5rem; right: 1rem;}
 }
 </style>
 </head>
 <body>
 
-<nav class="topbar">
-  <div class="topbar-inner">
-    <a class="logo" href="#">🚀 AI Prompt 智能寶庫</a>
-    
-    <div class="search-bar">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="searchInput" type="text" placeholder="搜尋提示詞、分類...">
-      <button class="clear-search" id="clearSearchBtn" aria-label="清除搜尋">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    
-    <div class="topbar-actions">
-      <!-- 深淺主題切換按鈕 -->
-      <button class="action-btn" id="themeToggleBtn" title="切換深淺模式" aria-label="切換深淺模式">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1eCBWboc-U58IUu45wOuusZQ-4abA5v-gH8SjYTTnCZg/edit?usp=sharing" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-        <span>原始資料</span>
-      </a>
-    </div>
-  </div>
-</nav>
+<!-- 頂部主題切換按鈕 -->
+<div class="topbar">
+  <button class="action-btn" id="themeToggleBtn" title="切換深淺模式" aria-label="切換深淺模式">
+    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</div>
 
+<!-- 英雄宣傳區 -->
 <header class="hero">
-  <h1>🧠 AI Prompt 智能寶庫</h1>
-  <p>精選優質提示詞收錄，提升您的工作與學習效能，一鍵複製即刻使用。</p>
-  <div class="hero-stats">
-    <div class="stat"><span class="stat-num" id="statTotal">—</span><span class="stat-label">提示詞</span></div>
-    <div class="stat"><span class="stat-num" id="statCats">—</span><span class="stat-label">分類</span></div>
-  </div>
+  <h1>🚀 AI Prompt 智能寶庫</h1>
+  <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1eCBWboc-U58IUu45wOuusZQ-4abA5v-gH8SjYTTnCZg/edit?usp=sharing" target="_blank" rel="noopener">
+    📂 開啟原始資料 Google Sheet
+  </a>
 </header>
 
+<!-- 置中搜尋框 -->
+<div class="search-container">
+  <div class="search-bar">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input id="searchInput" type="text" placeholder="搜尋提示詞...">
+    <button class="clear-search" id="clearSearchBtn" aria-label="清除搜尋">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- 分類 Pills -->
 <div class="filter-section">
   <div class="filter-scroll" id="filterWrap">
     <button class="pill active" data-cat="全部">全部</button>
   </div>
 </div>
 
+<!-- 主要內容卡片區 -->
 <main class="layout" id="main">
   <div class="state-box"><div class="spinner"></div><strong>正在載入資料...</strong><p>正在與 Google Sheet 進行即時同步，請稍候</p></div>
 </main>
 
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
-  <div class="modal">
-    <div class="modal-header">
-      <h3 id="modalTitle"></h3>
-      <button class="modal-close" id="modalClose" aria-label="關閉">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="modal-content"><pre id="modalBody"></pre></div>
-    <div class="modal-footer">
-      <button class="btn-modal-copy" id="modalCopyBtn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        複製 Prompt
-      </button>
-    </div>
-  </div>
-</div>
-
+<!-- Toast 彈出通知 -->
 <div class="toast" id="toast">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
   已複製提示詞到剪貼簿！
@@ -306,7 +283,7 @@ const SHEET_ID='1eCBWboc-U58IUu45wOuusZQ-4abA5v-gH8SjYTTnCZg';
 const GID='1480282197';
 const CSV_URL=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
 
-let allData=[],catPal={},palIdx=0,activeFilter='全部',searchQ='',modalPrompt='';
+let allData=[],catPal={},palIdx=0,activeFilter='全部',searchQ='';
 
 // 深淺模式切換邏輯
 const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -314,13 +291,21 @@ const sunIcon = themeToggleBtn.querySelector('.sun-icon');
 const moonIcon = themeToggleBtn.querySelector('.moon-icon');
 
 function initTheme() {
-  const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  let savedTheme = 'light';
+  try {
+    savedTheme = localStorage.getItem('theme');
+  } catch (e) {}
+  if (!savedTheme) {
+    savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
   setTheme(savedTheme);
 }
 
 function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
+  try {
+    localStorage.setItem('theme', theme);
+  } catch (e) {}
   if (theme === 'dark') {
     sunIcon.style.display = 'block';
     moonIcon.style.display = 'none';
@@ -335,30 +320,70 @@ themeToggleBtn.addEventListener('click', () => {
   setTheme(currentTheme === 'dark' ? 'light' : 'dark');
 });
 
-// CSV 解析邏輯優化
-function parseCSV(text){
-  const lines=text.trim().split(/\r?\n/);
-  if(lines.length<2)return[];
-  const headers=splitLine(lines[0]).map(clean);
-  return lines.slice(1).map(line=>{
-    const cols=splitLine(line),obj={};
-    headers.forEach((h,i)=>obj[h]=clean(cols[i]||''));
-    return obj;
-  }).filter(r=>Object.values(r).some(v=>v));
-}
+// 高級 CSV 解析狀態機：完美解析多行、引號內含換行的複雜單元格
+function parseCSV(text) {
+  const lines = [];
+  let row = [];
+  let cell = '';
+  let inQuotes = false;
 
-function splitLine(line){
-  const out=[];let cur='',q=false;
-  for(let i=0;i<line.length;i++){
-    const c=line[i];
-    if(c==='"'){if(q&&line[i+1]==='"'){cur+='"';i++;}else q=!q;}
-    else if(c===','&&!q){out.push(cur);cur='';}
-    else cur+=c;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const nextChar = text[i + 1];
+
+    if (inQuotes) {
+      if (char === '"') {
+        if (nextChar === '"') {
+          cell += '"';
+          i++; // 跳過下一個引號
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        cell += char;
+      }
+    } else {
+      if (char === '"') {
+        inQuotes = true;
+      } else if (char === ',') {
+        row.push(cell.trim());
+        cell = '';
+      } else if (char === '\r' || char === '\n') {
+        row.push(cell.trim());
+        cell = '';
+        lines.push(row);
+        row = [];
+        if (char === '\r' && nextChar === '\n') {
+          i++;
+        }
+      } else {
+        cell += char;
+      }
+    }
   }
-  out.push(cur);return out;
-}
-function clean(s){return s.trim().replace(/^"|"$/g,'').replace(/""/g,'"');}
+  if (cell || row.length > 0) {
+    row.push(cell.trim());
+    lines.push(row);
+  }
 
+  if (lines.length < 2) return [];
+
+  const headers = lines[0].map(h => h.trim().replace(/^"|"$/g, ''));
+  const data = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const r = lines[i];
+    if (r.length === 0 || (r.length === 1 && r[0] === '')) continue;
+    const obj = {};
+    headers.forEach((h, idx) => {
+      obj[h] = r[idx] !== undefined ? r[idx] : '';
+    });
+    data.push(obj);
+  }
+  return data;
+}
+
+// 欄位匹配提取器
 function getField(row,...keys){
   for(const k of keys){
     if(row[k]!==undefined&&row[k]!=='')return row[k];
@@ -367,35 +392,35 @@ function getField(row,...keys){
   }
   return'';
 }
-const getCat=r=>getField(r,'分類','類別','category','Category','標籤','tag','Tag')||'其他';
+
+const getType=r=>getField(r,'Type','type','類型','群組')||'其他';
+const getCat=r=>getField(r,'Category','category','分類','類別','標籤','tag','Tag')||'其他';
 const getTitle=r=>getField(r,'標題','title','Title','名稱','name','Name','主題');
 const getPrompt=r=>getField(r,'內容','prompt','Prompt','提示詞','content','Content','說明','description','正文');
 
-function palFor(cat){if(catPal[cat]===undefined)catPal[cat]=palIdx++%12;return catPal[cat];}
+function palFor(type){if(catPal[type]===undefined)catPal[type]=palIdx++%12;return catPal[type];}
 
 // 分類圖示對照
-const EMOJI={'內容創作':'✍️','筆記精煉':'📝','筆記整理':'🗂️','程式應用':'💻','程式生成':'⚙️','簡報表達':'🎤','文本優化':'✨','生文校正':'📖','專案企劃':'📋','資訊整理':'📊','圖片生成':'🖼️','心智圖法':'🧠','AI協助':'🤖','其他':'💡'};
+const EMOJI={'AI 協思':'🧠','AI 協助':'🤖','內容創作':'✍️','筆記精煉':'📝','筆記整理':'🗂️','程式應用':'💻','程式生成':'⚙️','簡報表達':'🎤','文本優化':'✨','生文校正':'📖','專案企劃':'📋','資訊整理':'📊','圖片生成':'🖼️','心智圖法':'🧠','其他':'💡'};
 const emoji=c=>EMOJI[c]||'💡';
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 function cardHTML(row){
-  const cat=getCat(row),title=getTitle(row),prompt=getPrompt(row);
+  const type=getType(row),cat=getCat(row),title=getTitle(row),prompt=getPrompt(row);
   if(!title&&!prompt)return'';
-  const p=palFor(cat);
+  const p=palFor(type);
   return`<div class="card p${p}">
   <div class="card-stripe"></div>
   <div class="card-body">
     <span class="card-tag">${esc(cat)}</span>
     <div class="card-title">${esc(title)}</div>
-    <div class="card-preview">${esc(prompt)}</div>
+    <!-- 內容容器：完全保留內文的所有段落，100% 呈現 -->
+    <div class="card-prompt-box">${esc(prompt)}</div>
   </div>
   <div class="card-footer">
     <button class="btn-copy" data-prompt="${esc(prompt)}">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       <span>複製 Prompt</span>
-    </button>
-    <button class="btn-expand" data-title="${esc(title)}" data-prompt="${esc(prompt)}" aria-label="展開全文">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
     </button>
   </div>
 </div>`;
@@ -405,39 +430,53 @@ function cardHTML(row){
 function render(){
   const main=document.getElementById('main');
   const q=searchQ.toLowerCase();
+  
+  // 篩選出符合 Pill 類別 (Category) 與搜尋框 (Search Query) 的資料
   const filtered=allData.filter(row=>{
-    const cat=getCat(row),t=getTitle(row).toLowerCase(),b=getPrompt(row).toLowerCase();
-    return(activeFilter==='全部'||cat===activeFilter)&&(!q||t.includes(q)||b.includes(q)||cat.toLowerCase().includes(q));
+    const type=getType(row);
+    const cat=getCat(row);
+    const t=getTitle(row).toLowerCase();
+    const b=getPrompt(row).toLowerCase();
+    return(activeFilter==='全部'||cat===activeFilter)&&(!q||t.includes(q)||b.includes(q)||cat.toLowerCase().includes(q)||type.toLowerCase().includes(q));
   });
+  
   if(!filtered.length){
     main.innerHTML=`<div class="state-box"><div class="icon">🔍</div><strong>找不到符合的提示詞</strong><p>試試其他關鍵字或變更分類篩選</p></div>`;
     return;
   }
+  
+  // 依據群組 (Type) 來做大分類分區
   const groups={};
-  filtered.forEach(row=>{const c=getCat(row);if(!groups[c])groups[c]=[];groups[c].push(row);});
-  main.innerHTML=Object.entries(groups).map(([cat,rows])=>`
+  filtered.forEach(row=>{
+    const t=getType(row);
+    if(!groups[t])groups[t]=[];
+    groups[t].push(row);
+  });
+  
+  main.innerHTML=Object.entries(groups).map(([type,rows])=>`
 <div class="section">
-  <div class="section-head"><h2>${emoji(cat)} ${esc(cat)}</h2><span class="section-count">${rows.length}</span></div>
+  <div class="section-head"><h2>${emoji(type)} ${esc(type)}</h2><span class="section-count">${rows.length}</span></div>
   <div class="cards">${rows.map(cardHTML).join('')}</div>
 </div>`).join('');
   
-  // 重新綁定複製與展開事件
+  // 重新綁定複製事件
   document.querySelectorAll('.btn-copy').forEach(b=>b.addEventListener('click',()=>copyText(b.dataset.prompt,b)));
-  document.querySelectorAll('.btn-expand').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.title,b.dataset.prompt)));
 }
 
-// 提升剪貼簿複製相容性
+// 提升剪貼簿複製相容性 (預設 iframe 降級方案以完全支援 Sandbox 預覽環境)
 function copyText(text,btn){
-  navigator.clipboard.writeText(text).catch(()=>{
-    // 降級處理方案 (Fallback)
-    const ta=Object.assign(document.createElement('textarea'),{value:text});
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
     document.execCommand('copy');
-    ta.remove();
-  });
+  } catch (err) {
+    console.error('複製失敗：', err);
+  }
+  document.body.removeChild(ta);
   
   if(btn){
     const originalContent = btn.innerHTML;
@@ -453,31 +492,6 @@ function copyText(text,btn){
   clearTimeout(t._t);
   t._t=setTimeout(()=>t.classList.remove('show'),2200);
 }
-
-// 彈窗開啟與關閉
-function openModal(title,prompt){
-  modalPrompt=prompt;
-  document.getElementById('modalTitle').textContent=title;
-  document.getElementById('modalBody').textContent=prompt;
-  const overlay = document.getElementById('modalOverlay');
-  overlay.style.display = 'flex';
-  setTimeout(() => overlay.classList.add('open'), 10);
-  document.body.style.overflow='hidden';
-}
-
-function closeModal(){
-  const overlay = document.getElementById('modalOverlay');
-  overlay.classList.remove('open');
-  setTimeout(() => {
-    if(!overlay.classList.contains('open')) overlay.style.display = 'none';
-  }, 200);
-  document.body.style.overflow='';
-}
-
-document.getElementById('modalClose').addEventListener('click',closeModal);
-document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-document.getElementById('modalCopyBtn').addEventListener('click',function(){copyText(modalPrompt,this);});
 
 // 搜尋輸入框邏輯
 let st;
@@ -502,9 +516,10 @@ clearSearchBtn.addEventListener('click', () => {
   render();
 });
 
-// 建立分類標籤過濾器
+// 建立分類標籤過濾器 (從 Category 欄位提取)
 function buildFilters(cats){
   const wrap=document.getElementById('filterWrap');
+  if(!wrap) return;
   wrap.innerHTML='';
   ['全部',...cats].forEach(cat=>{
     const b=document.createElement('button');
@@ -527,9 +542,9 @@ async function loadData(){
     const text=await r.text();
     allData=parseCSV(text).filter(row=>getTitle(row)||getPrompt(row));
     const cats=[...new Set(allData.map(getCat))];
-    document.getElementById('statTotal').textContent=allData.length;
-    document.getElementById('statCats').textContent=cats.length;
-    cats.forEach(c=>palFor(c));
+    
+    // 安全地初始化調色盤配色與 Pills 按鈕
+    allData.forEach(row=>palFor(getType(row)));
     buildFilters(cats);
     render();
   }catch(err){
