@@ -3,701 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AI Prompt 智能寶庫 — 精選提示詞收藏庫">
-<title>🚀 AI Prompt 智能寶庫</title>
+<title>AI Prompt 智能寶庫</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#eef0f6;--surface:#fff;--surface-2:#f7f8fc;
+  --border:rgba(0,0,0,0.07);--focus:#4f7ef8;
+  --t1:#12131a;--t2:#5a5f72;--t3:#9097ac;
+  --blue:#4f7ef8;--blue-d:#2d5bd6;--green:#10b981;
+  --r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:24px;
+  --s1:0 2px 8px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --s2:0 8px 28px rgba(0,0,0,.15);
+  --ease:0.2s cubic-bezier(.4,0,.2,1);
+}
+/* palette: bg / text / accent / light / dark */
+.p0{--cb:#f3f0ff;--ct:#4c1d95;--cm:#7c3aed;--cs:#ede9fe;--ck:#5b21b6}
+.p1{--cb:#ecfdf5;--ct:#064e3b;--cm:#059669;--cs:#d1fae5;--ck:#065f46}
+.p2{--cb:#eff6ff;--ct:#1e3a8a;--cm:#2563eb;--cs:#dbeafe;--ck:#1d4ed8}
+.p3{--cb:#fff7ed;--ct:#7c2d12;--cm:#ea580c;--cs:#ffedd5;--ck:#c2410c}
+.p4{--cb:#fdf2f8;--ct:#831843;--cm:#db2777;--cs:#fce7f3;--ck:#9d174d}
+.p5{--cb:#fefce8;--ct:#713f12;--cm:#ca8a04;--cs:#fef9c3;--ck:#854d0e}
+.p6{--cb:#fff1f2;--ct:#881337;--cm:#e11d48;--cs:#ffe4e6;--ck:#9f1239}
+.p7{--cb:#ecfeff;--ct:#164e63;--cm:#0891b2;--cs:#cffafe;--ck:#155e75}
+.p8{--cb:#f7fee7;--ct:#365314;--cm:#65a30d;--cs:#ecfccb;--ck:#3f6212}
+.p9{--cb:#faf5ff;--ct:#581c87;--cm:#a21caf;--cs:#fae8ff;--ck:#7e22ce}
+.p10{--cb:#fff0f0;--ct:#7f1d1d;--cm:#dc2626;--cs:#fee2e2;--ck:#991b1b}
+.p11{--cb:#eef2ff;--ct:#312e81;--cm:#4f46e5;--cs:#e0e7ff;--ck:#3730a3}
 
-/* ── Tokens ── */
-:root {
-  --bg:            #eef0f6;
-  --surface:       #ffffff;
-  --surface-2:     #f7f8fc;
-  --border:        rgba(0,0,0,0.07);
-  --border-focus:  #4f7ef8;
-  --text-1:        #12131a;
-  --text-2:        #5a5f72;
-  --text-3:        #9097ac;
-  --blue:          #4f7ef8;
-  --blue-dark:     #2d5bd6;
-  --green:         #10b981;
-  --radius-sm:     8px;
-  --radius-md:     12px;
-  --radius-lg:     16px;
-  --radius-xl:     24px;
-  --shadow-card:   0 1px 2px rgba(0,0,0,0.05), 0 4px 20px rgba(0,0,0,0.06);
-  --shadow-hover:  0 8px 32px rgba(0,0,0,0.12);
-  --transition:    0.2s cubic-bezier(.4,0,.2,1);
-}
+body{font-family:'Noto Sans TC',-apple-system,sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;line-height:1.6}
 
-/* ── Body ── */
-body {
-  font-family: 'Noto Sans TC', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text-1);
-  min-height: 100vh;
-  line-height: 1.6;
-}
+/* topbar */
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;height:56px;display:flex;align-items:center;gap:1rem}
+.logo{font-size:1rem;font-weight:700;color:var(--t1);text-decoration:none;white-space:nowrap}
+.search-bar{flex:1;max-width:440px;margin:0 auto;position:relative}
+.search-bar svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--t3);pointer-events:none}
+#searchInput{width:100%;height:36px;padding:0 12px 0 36px;border:1px solid var(--border);border-radius:var(--r-xl);background:var(--surface-2);font-size:.85rem;font-family:inherit;color:var(--t1);outline:none;transition:border-color var(--ease),box-shadow var(--ease)}
+#searchInput:focus{border-color:var(--focus);box-shadow:0 0 0 3px rgba(79,126,248,.15);background:var(--surface)}
+#searchInput::placeholder{color:var(--t3)}
+.topbar-right{margin-left:auto;white-space:nowrap}
+.sheet-link{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;color:var(--t2);text-decoration:none;padding:5px 10px;border-radius:var(--r-sm);border:1px solid var(--border);transition:background var(--ease),color var(--ease)}
+.sheet-link:hover{background:var(--surface-2);color:var(--t1)}
+.sheet-link svg{width:13px;height:13px}
 
-/* ── Top bar ── */
-.topbar {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-.topbar-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.logo {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-1);
-  white-space: nowrap;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.search-bar {
-  flex: 1;
-  max-width: 440px;
-  margin: 0 auto;
-  position: relative;
-}
-.search-bar svg {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 15px;
-  height: 15px;
-  color: var(--text-3);
-  pointer-events: none;
-}
-#searchInput {
-  width: 100%;
-  height: 36px;
-  padding: 0 12px 0 36px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  background: var(--surface-2);
-  font-size: 0.85rem;
-  font-family: inherit;
-  color: var(--text-1);
-  outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-#searchInput:focus {
-  border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(79,126,248,0.15);
-  background: var(--surface);
-}
-#searchInput::placeholder { color: var(--text-3); }
-.topbar-right {
-  margin-left: auto;
-  white-space: nowrap;
-}
-.sheet-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
-  color: var(--text-2);
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  transition: background var(--transition), color var(--transition);
-}
-.sheet-link:hover { background: var(--surface-2); color: var(--text-1); }
-.sheet-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+/* hero */
+.hero{text-align:center;padding:3rem 1rem 2rem}
+.hero h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero p{margin-top:.6rem;font-size:.9rem;color:var(--t2)}
+.hero-stats{display:inline-flex;gap:1.5rem;margin-top:1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:.5rem 1.5rem}
+.stat{text-align:center}
+.stat-num{font-size:1.2rem;font-weight:700;color:var(--blue);display:block}
+.stat-label{font-size:.72rem;color:var(--t3)}
 
-/* ── Hero ── */
-.hero {
-  text-align: center;
-  padding: 3rem 1rem 2rem;
-}
-.hero h1 {
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--text-1);
-  line-height: 1.2;
-}
-.hero p {
-  margin-top: 0.6rem;
-  font-size: 0.9rem;
-  color: var(--text-2);
-}
-.hero-stats {
-  display: inline-flex;
-  gap: 1.5rem;
-  margin-top: 1.2rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: 0.5rem 1.5rem;
-}
-.stat { text-align: center; }
-.stat-num {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--blue);
-  display: block;
-}
-.stat-label { font-size: 0.72rem; color: var(--text-3); }
+/* filter */
+.filter-section{max-width:1280px;margin:0 auto;padding:0 1.5rem 1.2rem}
+.filter-scroll{display:flex;flex-wrap:wrap;gap:6px}
+.pill{cursor:pointer;padding:.3rem .9rem;border-radius:var(--r-xl);font-size:.78rem;font-weight:500;font-family:inherit;background:var(--surface);color:var(--t2);border:1px solid var(--border);transition:all var(--ease);white-space:nowrap;user-select:none}
+.pill:hover{border-color:var(--blue);color:var(--blue)}
+.pill.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 
-/* ── Filter pills ── */
-.filter-section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem 1.2rem;
-}
-.filter-scroll {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.pill {
-  cursor: pointer;
-  padding: 0.3rem 0.9rem;
-  border-radius: var(--radius-xl);
-  font-size: 0.78rem;
-  font-weight: 500;
-  font-family: inherit;
-  background: var(--surface);
-  color: var(--text-2);
-  border: 1px solid var(--border);
-  transition: all var(--transition);
-  white-space: nowrap;
-  user-select: none;
-}
-.pill:hover { border-color: var(--blue); color: var(--blue); }
-.pill.active {
-  background: var(--blue);
-  color: #fff;
-  border-color: var(--blue);
-}
+/* layout */
+.layout{max-width:1280px;margin:0 auto;padding:0 1.5rem 4rem}
+.section{margin-bottom:2.8rem}
+.section-head{display:flex;align-items:center;gap:8px;margin-bottom:1rem}
+.section-head h2{font-size:1.05rem;font-weight:700}
+.section-count{font-size:.72rem;color:var(--t3);background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:1px 8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
 
-/* ── Grid layout ── */
-.layout {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem 4rem;
+/* card — full colour background */
+.card{
+  background:var(--cb);
+  border-radius:var(--r-lg);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:var(--s1);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:box-shadow var(--ease),transform var(--ease);
+  animation:fadeUp .3s ease both;
 }
+.card:hover{box-shadow:var(--s2);transform:translateY(-3px)}
+.card-stripe{height:4px;background:var(--cm);width:100%}
+.card-body{padding:1rem 1.1rem;flex:1;display:flex;flex-direction:column;gap:.5rem}
+.card-tag{font-size:.68rem;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:999px;display:inline-block;width:fit-content;background:var(--cm);color:#fff}
+.card-title{font-size:1rem;font-weight:700;color:var(--ct);line-height:1.35}
+.card-preview{font-size:.78rem;line-height:1.75;flex:1;color:var(--ck);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.card-footer{padding:.75rem 1.1rem;border-top:1px solid rgba(0,0,0,.06);display:flex;gap:8px;background:var(--cs)}
+.btn-copy{flex:1;padding:.5rem;border-radius:var(--r-sm);background:var(--cm);color:#fff;font-size:.78rem;font-weight:600;font-family:inherit;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:opacity var(--ease),transform var(--ease)}
+.btn-copy:hover{opacity:.85}
+.btn-copy:active{transform:scale(.97)}
+.btn-copy.done{background:var(--green)}
+.btn-expand{width:34px;height:34px;border-radius:var(--r-sm);background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.1);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--ease)}
+.btn-expand:hover{background:rgba(255,255,255,.9)}
+.btn-expand svg{width:14px;height:14px;color:var(--ck)}
 
-/* ── Section ── */
-.section { margin-bottom: 2.5rem; }
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 1rem;
-}
-.section-head h2 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-1);
-}
-.section-count {
-  font-size: 0.72rem;
-  color: var(--text-3);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 1px 8px;
-}
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 12px;
-}
+/* modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,12,20,.55);z-index:200;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--r-lg);max-width:640px;width:100%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.2);animation:popIn .2s ease}
+.modal-header{padding:1.2rem 1.4rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
+.modal-header h3{font-size:1rem;font-weight:700;flex:1;line-height:1.35}
+.modal-close{width:28px;height:28px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--ease)}
+.modal-close:hover{background:#fee2e2}
+.modal-close svg{width:14px;height:14px;color:var(--t2)}
+.modal-content{padding:1.2rem 1.4rem;overflow-y:auto;flex:1}
+.modal-content pre{font-family:inherit;font-size:.82rem;line-height:1.75;color:var(--t1);white-space:pre-wrap;word-break:break-word}
+.modal-footer{padding:1rem 1.4rem;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
+.btn-modal-copy{padding:.5rem 1.2rem;border-radius:var(--r-sm);background:var(--blue);color:#fff;font-size:.82rem;font-weight:600;font-family:inherit;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background var(--ease)}
+.btn-modal-copy:hover{background:var(--blue-d)}
+.btn-modal-copy.done{background:var(--green)}
 
-/* ── Card ── */
-.card {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  transition: box-shadow var(--transition), transform var(--transition);
-  animation: fadeUp 0.3s ease both;
-}
-.card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
-}
-.card-accent {
-  height: 3px;
-  width: 100%;
-}
-.card-body {
-  padding: 1rem 1.1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.card-tag {
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 999px;
-  display: inline-block;
-  width: fit-content;
-  letter-spacing: 0.02em;
-}
-.card-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-1);
-  line-height: 1.35;
-}
-.card-preview {
-  font-size: 0.78rem;
-  color: var(--text-2);
-  line-height: 1.7;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.card-footer {
-  padding: 0.75rem 1.1rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  gap: 8px;
-}
-.btn-copy {
-  flex: 1;
-  padding: 0.5rem;
-  border-radius: var(--radius-sm);
-  background: var(--blue);
-  color: #fff;
-  font-size: 0.78rem;
-  font-weight: 600;
-  font-family: inherit;
-  border: none;
-  cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-.btn-copy:hover { background: var(--blue-dark); }
-.btn-copy:active { transform: scale(0.97); }
-.btn-copy.done { background: var(--green); }
-.btn-expand {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--transition);
-  flex-shrink: 0;
-}
-.btn-expand:hover { background: var(--border); }
-.btn-expand svg { width: 15px; height: 15px; color: var(--text-2); }
+/* toast */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(60px);background:#12131a;color:#fff;font-size:.82rem;font-weight:500;padding:.55rem 1.3rem;border-radius:999px;pointer-events:none;opacity:0;transition:transform .3s,opacity .3s;z-index:9999;display:flex;align-items:center;gap:6px}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
-/* ── Category colors ── */
-:root {
-  --c-purple-bg: #ede9fe; --c-purple-text: #5b21b6; --c-purple-accent: #7c3aed;
-  --c-teal-bg:   #d1fae5; --c-teal-text:   #065f46; --c-teal-accent:   #059669;
-  --c-blue-bg:   #dbeafe; --c-blue-text:   #1e40af; --c-blue-accent:   #2563eb;
-  --c-orange-bg: #ffedd5; --c-orange-text: #9a3412; --c-orange-accent: #ea580c;
-  --c-pink-bg:   #fce7f3; --c-pink-text:   #9d174d; --c-pink-accent:   #db2777;
-  --c-yellow-bg: #fef9c3; --c-yellow-text: #854d0e; --c-yellow-accent: #d97706;
-  --c-red-bg:    #fee2e2; --c-red-text:    #991b1b; --c-red-accent:    #dc2626;
-  --c-cyan-bg:   #cffafe; --c-cyan-text:   #155e75; --c-cyan-accent:   #0891b2;
-  --c-lime-bg:   #ecfccb; --c-lime-text:   #365314; --c-lime-accent:   #65a30d;
-  --c-fuchsia-bg:#fae8ff; --c-fuchsia-text:#6b21a8; --c-fuchsia-accent:#a21caf;
-  --c-rose-bg:   #ffe4e6; --c-rose-text:   #9f1239; --c-rose-accent:   #e11d48;
-  --c-indigo-bg: #e0e7ff; --c-indigo-text: #3730a3; --c-indigo-accent: #4f46e5;
-}
-.clr-0  { --cb:var(--c-purple-bg);  --ct:var(--c-purple-text);  --ca:var(--c-purple-accent); }
-.clr-1  { --cb:var(--c-teal-bg);    --ct:var(--c-teal-text);    --ca:var(--c-teal-accent); }
-.clr-2  { --cb:var(--c-blue-bg);    --ct:var(--c-blue-text);    --ca:var(--c-blue-accent); }
-.clr-3  { --cb:var(--c-orange-bg);  --ct:var(--c-orange-text);  --ca:var(--c-orange-accent); }
-.clr-4  { --cb:var(--c-pink-bg);    --ct:var(--c-pink-text);    --ca:var(--c-pink-accent); }
-.clr-5  { --cb:var(--c-yellow-bg);  --ct:var(--c-yellow-text);  --ca:var(--c-yellow-accent); }
-.clr-6  { --cb:var(--c-red-bg);     --ct:var(--c-red-text);     --ca:var(--c-red-accent); }
-.clr-7  { --cb:var(--c-cyan-bg);    --ct:var(--c-cyan-text);    --ca:var(--c-cyan-accent); }
-.clr-8  { --cb:var(--c-lime-bg);    --ct:var(--c-lime-text);    --ca:var(--c-lime-accent); }
-.clr-9  { --cb:var(--c-fuchsia-bg); --ct:var(--c-fuchsia-text); --ca:var(--c-fuchsia-accent); }
-.clr-10 { --cb:var(--c-rose-bg);    --ct:var(--c-rose-text);    --ca:var(--c-rose-accent); }
-.clr-11 { --cb:var(--c-indigo-bg);  --ct:var(--c-indigo-text);  --ca:var(--c-indigo-accent); }
-.card-accent { background: var(--ca); }
-.card-tag    { background: var(--cb); color: var(--ct); }
+/* states */
+.state-box{text-align:center;padding:4rem 1rem;color:var(--t2)}
+.state-box .icon{font-size:2.5rem;margin-bottom:.75rem}
+.state-box p{font-size:.88rem;margin-top:.3rem}
+.state-box small{font-size:.72rem;color:var(--t3);margin-top:.5rem;display:block}
+.spinner{width:36px;height:36px;border:3px solid rgba(79,126,248,.2);border-top-color:var(--blue);border-radius:50%;animation:spin .75s linear infinite;margin:0 auto 1rem}
 
-/* ── Modal ── */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10,12,20,0.55);
-  z-index: 200;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  max-width: 640px;
-  width: 100%;
-  max-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.2);
-  animation: popIn 0.2s ease;
-}
-.modal-header {
-  padding: 1.2rem 1.4rem 1rem;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.modal-header h3 { font-size: 1rem; font-weight: 700; flex: 1; line-height: 1.35; }
-.modal-close {
-  width: 28px; height: 28px;
-  border-radius: 6px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: background var(--transition);
-}
-.modal-close:hover { background: #fee2e2; }
-.modal-close svg { width: 14px; height: 14px; color: var(--text-2); }
-.modal-content {
-  padding: 1.2rem 1.4rem;
-  overflow-y: auto;
-  flex: 1;
-}
-.modal-content pre {
-  font-family: inherit;
-  font-size: 0.82rem;
-  line-height: 1.75;
-  color: var(--text-1);
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-.modal-footer {
-  padding: 1rem 1.4rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-}
-.btn-modal-copy {
-  padding: 0.5rem 1.2rem;
-  border-radius: var(--radius-sm);
-  background: var(--blue);
-  color: #fff;
-  font-size: 0.82rem;
-  font-weight: 600;
-  font-family: inherit;
-  border: none;
-  cursor: pointer;
-  display: flex; align-items: center; gap: 5px;
-  transition: background var(--transition);
-}
-.btn-modal-copy:hover { background: var(--blue-dark); }
-.btn-modal-copy.done { background: var(--green); }
+footer{text-align:center;padding:1.5rem;font-size:.75rem;color:var(--t3);border-top:1px solid var(--border)}
 
-/* ── Toast ── */
-.toast {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(60px);
-  background: #12131a;
-  color: #fff;
-  font-size: 0.82rem;
-  font-weight: 500;
-  padding: 0.55rem 1.3rem;
-  border-radius: 999px;
-  pointer-events: none;
-  opacity: 0;
-  transition: transform 0.3s, opacity 0.3s;
-  z-index: 9999;
-  display: flex; align-items: center; gap: 6px;
-}
-.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes popIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
 
-/* ── States ── */
-.state-box {
-  text-align: center;
-  padding: 4rem 1rem;
-  color: var(--text-2);
-}
-.state-box .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-.state-box p { font-size: 0.88rem; margin-top: 0.3rem; }
-.state-box small { font-size: 0.72rem; color: var(--text-3); margin-top: 0.5rem; display: block; }
-.spinner {
-  width: 36px; height: 36px;
-  border: 3px solid rgba(79,126,248,0.2);
-  border-top-color: var(--blue);
-  border-radius: 50%;
-  animation: spin 0.75s linear infinite;
-  margin: 0 auto 1rem;
-}
-.empty-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-
-/* ── Footer ── */
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  font-size: 0.75rem;
-  color: var(--text-3);
-  border-top: 1px solid var(--border);
-}
-
-/* ── Animations ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* ── Mobile ── */
-@media (max-width: 600px) {
-  .topbar-right { display: none; }
-  .hero { padding: 2rem 1rem 1.5rem; }
-  .hero-stats { gap: 1rem; }
-  .cards { grid-template-columns: 1fr; }
-  .layout, .filter-section { padding-left: 1rem; padding-right: 1rem; }
+@media(max-width:600px){
+  .topbar-right{display:none}
+  .hero{padding:2rem 1rem 1.5rem}
+  .hero-stats{gap:1rem}
+  .cards{grid-template-columns:1fr}
+  .layout,.filter-section{padding-left:1rem;padding-right:1rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ── Top bar ── -->
 <nav class="topbar">
   <div class="topbar-inner">
     <a class="logo" href="#">🚀 AI Prompt 智能寶庫</a>
     <div class="search-bar">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input id="searchInput" type="text" placeholder="搜尋提示詞、分類...">
     </div>
     <div class="topbar-right">
       <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1eCBWboc-U58IUu45wOuusZQ-4abA5v-gH8SjYTTnCZg/edit?usp=sharing" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14,2 14,8 20,8"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
         原始資料
       </a>
     </div>
   </div>
 </nav>
 
-<!-- ── Hero ── -->
 <header class="hero">
   <h1>🧠 AI Prompt 智能寶庫</h1>
   <p>精選提示詞收藏，一鍵複製，立即使用</p>
   <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-num" id="statTotal">—</span>
-      <span class="stat-label">提示詞</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num" id="statCats">—</span>
-      <span class="stat-label">分類</span>
-    </div>
+    <div class="stat"><span class="stat-num" id="statTotal">—</span><span class="stat-label">提示詞</span></div>
+    <div class="stat"><span class="stat-num" id="statCats">—</span><span class="stat-label">分類</span></div>
   </div>
 </header>
 
-<!-- ── Filters ── -->
 <div class="filter-section">
   <div class="filter-scroll" id="filterWrap">
     <button class="pill active" data-cat="全部">全部</button>
   </div>
 </div>
 
-<!-- ── Content ── -->
 <main class="layout" id="main">
-  <div class="state-box" id="loadingBox">
-    <div class="spinner"></div>
-    <p>正在從 Google Sheet 載入資料...</p>
-  </div>
+  <div class="state-box"><div class="spinner"></div><p>正在從 Google Sheet 載入資料...</p></div>
 </main>
 
-<!-- ── Modal ── -->
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
   <div class="modal">
     <div class="modal-header">
       <h3 id="modalTitle"></h3>
       <button class="modal-close" id="modalClose" aria-label="關閉">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M18 6 6 18M6 6l12 12"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>
     <div class="modal-content"><pre id="modalBody"></pre></div>
     <div class="modal-footer">
       <button class="btn-modal-copy" id="modalCopyBtn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-        </svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         複製 Prompt
       </button>
     </div>
   </div>
 </div>
 
-<!-- ── Toast ── -->
 <div class="toast" id="toast">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-    <path d="M20 6 9 17l-5-5"/>
-  </svg>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
   已複製到剪貼簿！
 </div>
 
-<!-- ── Footer ── -->
-<footer>
-  <p>由 Google Sheets 驅動 · 資料即時同步</p>
-</footer>
+<footer><p>由 Google Sheets 驅動 · 資料即時同步</p></footer>
 
 <script>
-/* ────────────────────────────────────────────────
-   Config
-──────────────────────────────────────────────── */
-const SHEET_ID = '1eCBWboc-U58IUu45wOuusZQ-4abA5v-gH8SjYTTnCZg';
-const GID      = '1480282197';
-const CSV_URL  = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
+const SHEET_ID='1eCBWboc-U58IUu45wOuusZQ-4abA5v-gH8SjYTTnCZg';
+const GID='1480282197';
+const CSV_URL=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
 
-/* ────────────────────────────────────────────────
-   State
-──────────────────────────────────────────────── */
-let allData    = [];
-let catColors  = {};
-let activeFilter = '全部';
-let searchQ    = '';
-let modalPrompt = '';
+let allData=[],catPal={},palIdx=0,activeFilter='全部',searchQ='',modalPrompt='';
 
-/* ────────────────────────────────────────────────
-   CSV Parser
-──────────────────────────────────────────────── */
-function parseCSV(text) {
-  const lines = text.trim().split(/\r?\n/);
-  if (lines.length < 2) return [];
-  const headers = splitLine(lines[0]).map(clean);
-  return lines.slice(1).map(line => {
-    const cols = splitLine(line);
-    const obj = {};
-    headers.forEach((h, i) => obj[h] = clean(cols[i] || ''));
+function parseCSV(text){
+  const lines=text.trim().split(/\r?\n/);
+  if(lines.length<2)return[];
+  const headers=splitLine(lines[0]).map(clean);
+  return lines.slice(1).map(line=>{
+    const cols=splitLine(line),obj={};
+    headers.forEach((h,i)=>obj[h]=clean(cols[i]||''));
     return obj;
-  }).filter(r => Object.values(r).some(v => v));
+  }).filter(r=>Object.values(r).some(v=>v));
 }
-
-function splitLine(line) {
-  const out = []; let cur = '', q = false;
-  for (let i = 0; i < line.length; i++) {
-    const c = line[i];
-    if (c === '"') { if (q && line[i+1] === '"') { cur += '"'; i++; } else q = !q; }
-    else if (c === ',' && !q) { out.push(cur); cur = ''; }
-    else cur += c;
+function splitLine(line){
+  const out=[];let cur='',q=false;
+  for(let i=0;i<line.length;i++){
+    const c=line[i];
+    if(c==='"'){if(q&&line[i+1]==='"'){cur+='"';i++;}else q=!q;}
+    else if(c===','&&!q){out.push(cur);cur='';}
+    else cur+=c;
   }
-  out.push(cur); return out;
+  out.push(cur);return out;
 }
+function clean(s){return s.trim().replace(/^"|"$/g,'').replace(/""/g,'"');}
 
-function clean(s) {
-  return s.trim().replace(/^"|"$/g, '').replace(/""/g, '"');
-}
-
-/* ────────────────────────────────────────────────
-   Field detection (handles Chinese/English headers)
-──────────────────────────────────────────────── */
-function getField(row, ...keys) {
-  for (const k of keys) {
-    if (row[k] !== undefined && row[k] !== '') return row[k];
-    const found = Object.keys(row).find(rk => rk.toLowerCase() === k.toLowerCase());
-    if (found && row[found] !== '') return row[found];
+function getField(row,...keys){
+  for(const k of keys){
+    if(row[k]!==undefined&&row[k]!=='')return row[k];
+    const f=Object.keys(row).find(rk=>rk.toLowerCase()===k.toLowerCase());
+    if(f&&row[f]!=='')return row[f];
   }
-  return '';
+  return'';
 }
+const getCat=r=>getField(r,'分類','類別','category','Category','標籤','tag','Tag')||'其他';
+const getTitle=r=>getField(r,'標題','title','Title','名稱','name','Name','主題');
+const getPrompt=r=>getField(r,'內容','prompt','Prompt','提示詞','content','Content','說明','description','正文');
 
-function getCat(row)   { return getField(row,'分類','類別','category','Category','標籤','tag','Tag') || '其他'; }
-function getTitle(row) { return getField(row,'標題','title','Title','名稱','name','Name','主題'); }
-function getPrompt(row){ return getField(row,'內容','prompt','Prompt','提示詞','content','Content','說明','description','正文'); }
+function palFor(cat){if(catPal[cat]===undefined)catPal[cat]=palIdx++%12;return catPal[cat];}
 
-/* ────────────────────────────────────────────────
-   Color assignment
-──────────────────────────────────────────────── */
-const PALETTE_COUNT = 12;
-let colorIdx = 0;
-function colorFor(cat) {
-  if (!catColors[cat]) catColors[cat] = colorIdx++ % PALETTE_COUNT;
-  return catColors[cat];
-}
+const EMOJI={'內容創作':'✍️','筆記精煉':'📝','筆記整理':'🗂️','程式應用':'💻','程式生成':'⚙️','簡報表達':'🎤','文本優化':'✨','生文校正':'📖','專案企劃':'📋','資訊整理':'📊','圖片生成':'🖼️','心智圖法':'🧠','AI協助':'🤖','其他':'💡'};
+const emoji=c=>EMOJI[c]||'💡';
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-/* ────────────────────────────────────────────────
-   Category emoji
-──────────────────────────────────────────────── */
-const EMOJI_MAP = {
-  '內容創作':'✍️','内容创作':'✍️',
-  '筆記精煉':'📝','笔记精煉':'📝','筆記整理':'🗂️','笔记整理':'🗂️',
-  '程式應用':'💻','程式生成':'⚙️','程式碼':'⚙️',
-  '簡報表達':'🎤','簡報':'🎤',
-  '文本優化':'✨','生文校正':'📖',
-  '專案企劃':'📋','資訊整理':'📊',
-  '圖片生成':'🖼️','心智圖法':'🧠',
-  'AI協助':'🤖','AI助理':'🤖',
-  '其他':'💡',
-};
-function emojiFor(cat) {
-  return EMOJI_MAP[cat] || '💡';
-}
-
-/* ────────────────────────────────────────────────
-   Render helpers
-──────────────────────────────────────────────── */
-function esc(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function cardHTML(row) {
-  const cat    = getCat(row);
-  const title  = getTitle(row);
-  const prompt = getPrompt(row);
-  if (!title && !prompt) return '';
-  const clr = colorFor(cat);
-  return `
-<div class="card clr-${clr}" data-cat="${esc(cat)}">
-  <div class="card-accent"></div>
+function cardHTML(row){
+  const cat=getCat(row),title=getTitle(row),prompt=getPrompt(row);
+  if(!title&&!prompt)return'';
+  const p=palFor(cat);
+  return`<div class="card p${p}">
+  <div class="card-stripe"></div>
   <div class="card-body">
     <span class="card-tag">${esc(cat)}</span>
     <div class="card-title">${esc(title)}</div>
@@ -705,175 +261,102 @@ function cardHTML(row) {
   </div>
   <div class="card-footer">
     <button class="btn-copy" data-prompt="${esc(prompt)}">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-        <rect x="9" y="9" width="13" height="13" rx="2"/>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-      </svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       複製 Prompt
     </button>
     <button class="btn-expand" data-title="${esc(title)}" data-prompt="${esc(prompt)}" aria-label="展開全文">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
     </button>
   </div>
 </div>`;
 }
 
-/* ────────────────────────────────────────────────
-   Main render
-──────────────────────────────────────────────── */
-function render() {
-  const main = document.getElementById('main');
-  const q = searchQ.toLowerCase();
-
-  const filtered = allData.filter(row => {
-    const cat   = getCat(row);
-    const title = getTitle(row).toLowerCase();
-    const body  = getPrompt(row).toLowerCase();
-    const matchCat    = activeFilter === '全部' || cat === activeFilter;
-    const matchSearch = !q || title.includes(q) || body.includes(q) || cat.toLowerCase().includes(q);
-    return matchCat && matchSearch;
+function render(){
+  const main=document.getElementById('main');
+  const q=searchQ.toLowerCase();
+  const filtered=allData.filter(row=>{
+    const cat=getCat(row),t=getTitle(row).toLowerCase(),b=getPrompt(row).toLowerCase();
+    return(activeFilter==='全部'||cat===activeFilter)&&(!q||t.includes(q)||b.includes(q)||cat.toLowerCase().includes(q));
   });
-
-  if (filtered.length === 0) {
-    main.innerHTML = `<div class="state-box"><div class="empty-icon">🔍</div><strong>找不到符合的提示詞</strong><p>試試其他關鍵字或分類</p></div>`;
+  if(!filtered.length){
+    main.innerHTML=`<div class="state-box"><div class="icon">🔍</div><strong>找不到符合的提示詞</strong><p>試試其他關鍵字或分類</p></div>`;
     return;
   }
-
-  /* group by category */
-  const groups = {};
-  filtered.forEach(row => {
-    const cat = getCat(row);
-    if (!groups[cat]) groups[cat] = [];
-    groups[cat].push(row);
-  });
-
-  const html = Object.entries(groups).map(([cat, rows]) => `
-    <div class="section">
-      <div class="section-head">
-        <h2>${emojiFor(cat)} ${esc(cat)}</h2>
-        <span class="section-count">${rows.length}</span>
-      </div>
-      <div class="cards">${rows.map(cardHTML).join('')}</div>
-    </div>
-  `).join('');
-
-  main.innerHTML = html;
-  bindCardEvents();
+  const groups={};
+  filtered.forEach(row=>{const c=getCat(row);if(!groups[c])groups[c]=[];groups[c].push(row);});
+  main.innerHTML=Object.entries(groups).map(([cat,rows])=>`
+<div class="section">
+  <div class="section-head"><h2>${emoji(cat)} ${esc(cat)}</h2><span class="section-count">${rows.length}</span></div>
+  <div class="cards">${rows.map(cardHTML).join('')}</div>
+</div>`).join('');
+  document.querySelectorAll('.btn-copy').forEach(b=>b.addEventListener('click',()=>copyText(b.dataset.prompt,b)));
+  document.querySelectorAll('.btn-expand').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.title,b.dataset.prompt)));
 }
 
-/* ────────────────────────────────────────────────
-   Events
-──────────────────────────────────────────────── */
-function bindCardEvents() {
-  document.querySelectorAll('.btn-copy').forEach(btn => {
-    btn.addEventListener('click', () => {
-      copyText(btn.dataset.prompt, btn);
-    });
+function copyText(text,btn){
+  navigator.clipboard.writeText(text).catch(()=>{
+    const ta=Object.assign(document.createElement('textarea'),{value:text});
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();
   });
-  document.querySelectorAll('.btn-expand').forEach(btn => {
-    btn.addEventListener('click', () => openModal(btn.dataset.title, btn.dataset.prompt));
-  });
+  if(btn){const o=btn.innerHTML;btn.innerHTML='✓ 已複製！';btn.classList.add('done');setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('done');},2000);}
+  const t=document.getElementById('toast');t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200);
 }
 
-function copyText(text, btn) {
-  navigator.clipboard.writeText(text).catch(() => {
-    const ta = Object.assign(document.createElement('textarea'), { value: text });
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
-  });
-  if (btn) {
-    const orig = btn.innerHTML;
-    btn.innerHTML = '✓ 已複製！'; btn.classList.add('done');
-    setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('done'); }, 2000);
-  }
-  showToast();
-}
-
-function showToast() {
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  clearTimeout(t._tid);
-  t._tid = setTimeout(() => t.classList.remove('show'), 2200);
-}
-
-/* ── Modal ── */
-function openModal(title, prompt) {
-  modalPrompt = prompt;
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalBody').textContent  = prompt;
+function openModal(title,prompt){
+  modalPrompt=prompt;
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalBody').textContent=prompt;
   document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
 }
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-document.getElementById('modalCopyBtn').addEventListener('click', function() {
-  copyText(modalPrompt, this);
-});
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+document.getElementById('modalCopyBtn').addEventListener('click',function(){copyText(modalPrompt,this);});
 
-/* ── Search ── */
-let searchTimer;
-document.getElementById('searchInput').addEventListener('input', e => {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(() => { searchQ = e.target.value; render(); }, 200);
-});
+let st;
+document.getElementById('searchInput').addEventListener('input',e=>{clearTimeout(st);st=setTimeout(()=>{searchQ=e.target.value;render();},200);});
 
-/* ── Filters ── */
-function buildFilters(cats) {
-  const wrap = document.getElementById('filterWrap');
-  wrap.innerHTML = '';
-  ['全部', ...cats].forEach(cat => {
-    const btn = document.createElement('button');
-    btn.className = 'pill' + (cat === activeFilter ? ' active' : '');
-    btn.dataset.cat = cat;
-    btn.textContent = cat;
-    btn.addEventListener('click', () => {
-      activeFilter = cat;
-      document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.dataset.cat === cat));
+function buildFilters(cats){
+  const wrap=document.getElementById('filterWrap');
+  wrap.innerHTML='';
+  ['全部',...cats].forEach(cat=>{
+    const b=document.createElement('button');
+    b.className='pill'+(cat===activeFilter?' active':'');
+    b.dataset.cat=cat;b.textContent=cat;
+    b.addEventListener('click',()=>{
+      activeFilter=cat;
+      document.querySelectorAll('.pill').forEach(p=>p.classList.toggle('active',p.dataset.cat===cat));
       render();
     });
-    wrap.appendChild(btn);
+    wrap.appendChild(b);
   });
 }
 
-/* ────────────────────────────────────────────────
-   Load data
-──────────────────────────────────────────────── */
-async function loadData() {
-  try {
-    const resp = await fetch(CSV_URL);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const text = await resp.text();
-    allData = parseCSV(text).filter(row => getTitle(row) || getPrompt(row));
-
-    /* stats */
-    const cats = [...new Set(allData.map(getCat))];
-    document.getElementById('statTotal').textContent = allData.length;
-    document.getElementById('statCats').textContent  = cats.length;
-
-    /* pre-assign colors in order */
-    cats.forEach(c => colorFor(c));
-
+async function loadData(){
+  try{
+    const r=await fetch(CSV_URL);
+    if(!r.ok)throw new Error(`HTTP ${r.status}`);
+    const text=await r.text();
+    allData=parseCSV(text).filter(row=>getTitle(row)||getPrompt(row));
+    const cats=[...new Set(allData.map(getCat))];
+    document.getElementById('statTotal').textContent=allData.length;
+    document.getElementById('statCats').textContent=cats.length;
+    cats.forEach(c=>palFor(c));
     buildFilters(cats);
     render();
-  } catch (err) {
-    document.getElementById('main').innerHTML = `
-      <div class="state-box">
-        <div class="icon">⚠️</div>
-        <strong>無法載入資料</strong>
-        <p>請確認 Google Sheet 已設定為「知道連結的人可以檢視」</p>
-        <small>${err.message}</small>
-        <br><br>
-        <button onclick="loadData()" style="padding:0.5rem 1.2rem;border-radius:8px;border:1px solid var(--border);background:var(--blue);color:#fff;cursor:pointer;font-size:0.82rem;">重新嘗試</button>
-      </div>`;
+  }catch(err){
+    document.getElementById('main').innerHTML=`
+<div class="state-box">
+  <div class="icon">⚠️</div>
+  <strong>無法載入資料</strong>
+  <p>請確認 Google Sheet 已設定為「知道連結的人可以檢視」</p>
+  <small>${err.message}</small><br><br>
+  <button onclick="loadData()" style="padding:.5rem 1.2rem;border-radius:8px;border:1px solid #ddd;background:var(--blue);color:#fff;cursor:pointer;font-size:.82rem">重新嘗試</button>
+</div>`;
   }
 }
-
 loadData();
 </script>
 </body>
